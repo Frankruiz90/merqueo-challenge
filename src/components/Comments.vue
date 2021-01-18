@@ -208,8 +208,8 @@ export default {
       seeComents: [],
       stateComment: false,
       seeReaction: false,
-      newComment: "",
-      newCommentMyState: "",
+      newComment: null,
+      newCommentMyState: null,
       countReactions: 0,
       name: "",
       seeStates: false,
@@ -223,41 +223,49 @@ export default {
     },
     addComment() {
       try {
-        let newData = {
-          name: this.name,
-          timeComment: "hoy",
-          myComment: this.newComment,
-          reactions: [
-            {
-              nameState: "like",
-              quantity: 0,
-            },
-            {
-              nameState: "dontLike",
+        if (this.newComment !== null) {
+          let newData = {
+            name: this.name,
+            timeComment: "hoy",
+            myComment: this.newComment,
+            reactions: [
+              {
+                nameState: "like",
+                quantity: 0,
+              },
+              {
+                nameState: "dontLike",
 
-              quantity: 0,
-            },
-            {
-              nameState: "mediumLike",
+                quantity: 0,
+              },
+              {
+                nameState: "mediumLike",
 
-              quantity: 0,
-            },
-          ],
-          comments: [],
-        };
-        this.comments.unshift(newData);
+                quantity: 0,
+              },
+            ],
+            comments: [],
+          };
+          this.comments.unshift(newData);
+        } else {
+          window.alert("No has ingresado un estado ");
+        }
       } finally {
         this.newComment = "";
       }
     },
     addNewComment(i) {
       try {
-        let newComment = {
-          nameComment: this.name,
-          yourComment: this.newCommentMyState,
-          dateComment: "Hoy",
-        };
-        this.comments[i].comments.unshift(newComment);
+        if (this.newCommentMyState !== null) {
+          let newComment = {
+            nameComment: this.name,
+            yourComment: this.newCommentMyState,
+            dateComment: "Hoy",
+          };
+          this.comments[i].comments.unshift(newComment);
+        } else {
+          window.alert("No has ingresado un comentario ");
+        }
       } finally {
         this.newCommentMyState = "";
       }
