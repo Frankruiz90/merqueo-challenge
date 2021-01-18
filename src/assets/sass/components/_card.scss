@@ -1,0 +1,181 @@
+@mixin date {
+  font-size: 15px;
+  color: rgb(204, 203, 203);
+}
+.container-card {
+  background-color: #e0d7d7;
+  padding: 20px;
+}
+.container-input {
+  background-color: #ffffff;
+  margin-bottom: 20px;
+  border-radius: 5px;
+
+  &__text {
+    margin: 10px;
+    width: calc(100% - 20px);
+    height: 65px;
+    border-radius: 3px;
+    border: none;
+    font-size: 25px;
+
+    &::-webkit-input-placeholder {
+      color: rgb(130, 196, 31);
+      font-size: 25px;
+    }
+  }
+  &-btn{
+    border-top: 2px solid #e7e7e7;
+    height: 45px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+  }
+}
+.container-input-comment {
+  padding: 30px;
+  &__comment {
+    margin: 5px;
+    &::-webkit-input-placeholder {
+      color: #d6d6d6;
+    }
+  }
+}
+.card-principal {
+  border-radius: 5px;
+  background-color: white;
+  border-color: grey;
+  box-shadow: 3px 3px 5px #999;
+  position: relative;
+  margin-bottom: 25px;
+}
+.card-icon {
+  position: absolute;
+  height: 180px;
+  width: 180px;
+  &__icon {
+    width: 180px;
+    height: 180px;
+  }
+  @media screen and (max-width: 900px) {
+    height: 130px;
+    width: 130px;
+    &__icon {
+      width: 130px;
+      height: 130px;
+    }
+  }
+}
+.card-information {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  border-bottom: #e7e7e7 solid 2px;
+  padding-left: 200px;
+
+  &__name {
+    color: rgb(113, 170, 27);
+    font-size: 25px;
+    margin-bottom: 0;
+  }
+  &__time-comment {
+    @include date();
+  }
+  &__text-comment {
+    font-size: 25px;
+    font-weight: 500;
+    text-align: initial;
+  }
+}
+
+.container-buttons {
+  display: flex;
+  place-self: flex-start;
+  @media screen and (max-width: 900px) {
+    display: none;
+  }
+}
+.container-buttons-small {
+  display: flex;
+  justify-content: center;
+  border-bottom: #e7e7e7 solid 2px;
+  :nth-child(2) {
+    width: 50%;
+  }
+  :first-child {
+    border-right: 2px solid #e7e7e7;
+    width: 50%;
+  }
+  @media screen and (min-width: 900px) {
+    display: none;
+  }
+}
+.container-state {
+  width: 100%;
+  height: 50px;
+  border-bottom: #e7e7e7 solid 2px;
+  display: flex;
+  justify-content: space-between;
+  &__reactions {
+    width: 120px;
+    height: 30px;
+    place-self: center;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    &-reactions {
+      width: 30px;
+      height: 30px;
+      border-radius: 100%;
+      background-color: grey;
+      margin: 1px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+  &__comments {
+    align-self: center;
+    margin-right: 10px;
+    color: rgb(204, 203, 203);
+  }
+}
+
+.container-comments {
+  background-color: #f6f6f4;
+  &__comment {
+    display: flex;
+    flex-flow: wrap;
+    position: relative;
+    height: 60px;
+    padding: 5px;
+    &-icon {
+      width: 64px;
+      height: 60px;
+      position: absolute;
+      &__profile {
+        width: 60px;
+        height: 60px;
+        border-radius: 100%;
+      }
+    }
+    &-name {
+      width: 64px;
+      text-align: initial;
+      padding-left: 64px;
+      color: rgb(113, 170, 27);
+      font-size: 20px;
+      font-weight: 600;
+    }
+    &-your-coment {
+      width: calc(100% - 64px - 64px);
+      text-align: left;
+      font-size: 20px;
+    }
+    &-date {
+      padding-left: 64px;
+      @include date();
+    }
+  }
+}
